@@ -1,3 +1,5 @@
-__pycache__
-.mypy_cache
 *~
+.mypy_cache
+/dist
+/simcradarlib.egg-info
+__pycache__
