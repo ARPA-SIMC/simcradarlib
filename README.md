@@ -1,17 +1,18 @@
 # simcradarlib
-________________________________________Introduzione____________________________________________________
+
+## Introduzione
 
 La libreria simcradarlib contiene utilities per le procedure radar di Arpae-SIMC operative e di sviluppo
 e nasce dall'esigenza di un porting da IDL e R a Python delle procedure e librere radar attualmente
 richiamate dalle procedure operative e di sviluppo.
 
-________________________________________Descrizione generale____________________________________________
+## Descrizione generale
 
-La prima release della libreria contiene tre moduli, indicati di seguito con -- .
+La prima release della libreria contiene tre moduli, indicati di seguito.
 Per la documentazione dettagliata dei singoli metodi e classi implementati nei sottomoduli si rimanda
 alla documentazione nel codice disponibile in forma 'docstring'.
 
--- io_utils :
+1. io_utils :
 
   contiene sottomoduli con classi e funzioni per la lettura di file netCDF, ZLR e BUFR e per la scrittura
   di file netCDF e BUFR e per la scrittura di campi 2D georeferenziati in formato ODIM OPERA v.2.1 .
@@ -70,7 +71,7 @@ alla documentazione nel codice disponibile in forma 'docstring'.
   - simcradarlib.io_utils.bufr_class
   - simcradarlib.io_utils.bufr_class.Bufr
 
--- log_utils :
+2. log_utils :
   contiene utilities per ottenere informazioni sull'esecuzione di processi ( lanciati da uno script o
   in una parte dello script principale)
 
@@ -80,7 +81,7 @@ alla documentazione nel codice disponibile in forma 'docstring'.
   - simcradarlib.log_utils.log_exec_process.log_exec_process.log_endprocess_info
   - simcradarlib.log_utils.log_exec_process.log_exec_process.log_subprocess_info
 
--- odim :
+3. odim :
   contiene utilities per la lettura di file ODIM OPERA v.2.1 di prodotti radar e per la scrittura di campi
   2D georeferenziati (come la POH) e volumi polari in formato ODIM OPERA v.2.1.
   
@@ -109,7 +110,7 @@ alla documentazione nel codice disponibile in forma 'docstring'.
   - simcradarlib.odim.odim_utils.odim_pvol.OdimHierarchyPvol
   - simcradarlib.odim.odim_utils.odim_image
 
- ____________________________________________Sviluppi futuri____________________________________________
+## Sviluppi futuri
 Lo sviluppo della libreria proseguirà nell'ottica di completare il porting delle routine esistenti usate
 dalle procedure operative in Python.
 
