@@ -13,77 +13,77 @@ Per la documentazione dettagliata dei singoli metodi e classi implementati nei s
 alla documentazione nel codice disponibile in forma 'docstring'.
 
 1. io_utils :
- contiene sottomoduli con classi e funzioni per la lettura di file netCDF, ZLR e BUFR e per la scrittura
- di file netCDF e BUFR e per la scrittura di campi 2D georeferenziati in formato ODIM OPERA v.2.1 . 
- Elenco dei sottomoduli, classi e funzioni presenti:
-  - simcradarlib.io_utils.structure_class
-  - simcradarlib.io_utils.structure_class.StructureBase
-  - simcradarlib.io_utils.structure_class.StructVariable
-  - simcradarlib.io_utils.structure_class.StructCoords
-  - simcradarlib.io_utils.structure_class.StructGrid
-  - simcradarlib.io_utils.structure_class.StructProjection
-  - simcradarlib.io_utils.structure_class.StructProduct
-  - simcradarlib.io_utils.structure_class.StructTime
-  - simcradarlib.io_utils.structure_class.StructSource
-  - simcradarlib.io_utils.structure_class.RadarProduct
-  - simcradarlib.io_utils.read_rad2d_nc
-  - simcradarlib.io_utils.read_rad2d_nc.readnc_to_struct
-  - simcradarlib.io_utils.read_rad2d_zlr
-  - simcradarlib.io_utils.read_rad2d_zlr.read_zlr
-  - simcradarlib.io_utils.rad_var_class
-  - simcradarlib.io_utils.rad_var_class.VarPr
-  - simcradarlib.io_utils.rad_var_class.VarZ60
-  - simcradarlib.io_utils.rad_var_class.VarCumPrr
-  - simcradarlib.io_utils.rad_var_class.VarZdr
-  - simcradarlib.io_utils.rad_var_class.VarVn16
-  - simcradarlib.io_utils.rad_var_class.VarVn49
-  - simcradarlib.io_utils.rad_var_class.VarSv
-  - simcradarlib.io_utils.rad_var_class.VarQc
-  - simcradarlib.io_utils.rad_var_class.VarPrmm
-  - simcradarlib.io_utils.rad_var_class.VarCumPrmm
-  - simcradarlib.io_utils.rad_var_class.VarZ
-  - simcradarlib.io_utils.rad_var_class.VarTh
-  - simcradarlib.io_utils.rad_var_class.VarDbzh
-  - simcradarlib.io_utils.rad_var_class.Vrad
-  - simcradarlib.io_utils.rad_var_class.Wrad
-  - simcradarlib.io_utils.rad_var_class.Rhohv
-  - simcradarlib.io_utils.rad_var_class.Phidp
-  - simcradarlib.io_utils.rad_var_class.Hght
-  - simcradarlib.io_utils.rad_var_class.DbzV
-  - simcradarlib.io_utils.rad_var_class.Poh
-  - simcradarlib.io_utils.rad_var_class.Vil
-  - simcradarlib.io_utils.rad_var_class.ClassConv
-  - simcradarlib.io_utils.rad_var_class.Snr
-  - simcradarlib.io_utils.rad_var_class.Class
-  - simcradarlib.io_utils.rad_var_class.VilDensity
-  - simcradarlib.io_utils.rad_var_class.VarRate
-  - simcradarlib.io_utils.rad_var_class.VarAcrr
-  - simcradarlib.io_utils.rad_var_class.VarClassId
-  - simcradarlib.io_utils.general_radar_utils
-  - simcradarlib.io_utils.general_radar_utils.get_reader
-  - simcradarlib.io_utils.general_radar_utils.unzip_to_nc
-  - simcradarlib.io_utils.general_radar_utils.get_meta_for_pysteps_from_macro
-  - simcradarlib.io_utils.general_radar_utils.dpc_utm_grid_from_meta_pysteps
-  - simcradarlib.io_utils.exporters
-  - simcradarlib.io_utils.exporters.ExportableVar
-  - simcradarlib.io_utils.bufr_class
-  - simcradarlib.io_utils.bufr_class.Bufr
+   contiene sottomoduli con classi e funzioni per la lettura di file netCDF, ZLR e BUFR e per la scrittura
+   di file netCDF e BUFR e per la scrittura di campi 2D georeferenziati in formato ODIM OPERA v.2.1 .
+   Elenco dei sottomoduli, classi e funzioni presenti:
+   - simcradarlib.io_utils.structure_class
+   - simcradarlib.io_utils.structure_class.StructureBase
+   - simcradarlib.io_utils.structure_class.StructVariable
+   - simcradarlib.io_utils.structure_class.StructCoords
+   - simcradarlib.io_utils.structure_class.StructGrid
+   - simcradarlib.io_utils.structure_class.StructProjection
+   - simcradarlib.io_utils.structure_class.StructProduct
+   - simcradarlib.io_utils.structure_class.StructTime
+   - simcradarlib.io_utils.structure_class.StructSource
+   - simcradarlib.io_utils.structure_class.RadarProduct
+   - simcradarlib.io_utils.read_rad2d_nc
+   - simcradarlib.io_utils.read_rad2d_nc.readnc_to_struct
+   - simcradarlib.io_utils.read_rad2d_zlr
+   - simcradarlib.io_utils.read_rad2d_zlr.read_zlr
+   - simcradarlib.io_utils.rad_var_class
+   - simcradarlib.io_utils.rad_var_class.VarPr
+   - simcradarlib.io_utils.rad_var_class.VarZ60
+   - simcradarlib.io_utils.rad_var_class.VarCumPrr
+   - simcradarlib.io_utils.rad_var_class.VarZdr
+   - simcradarlib.io_utils.rad_var_class.VarVn16
+   - simcradarlib.io_utils.rad_var_class.VarVn49
+   - simcradarlib.io_utils.rad_var_class.VarSv
+   - simcradarlib.io_utils.rad_var_class.VarQc
+   - simcradarlib.io_utils.rad_var_class.VarPrmm
+   - simcradarlib.io_utils.rad_var_class.VarCumPrmm
+   - simcradarlib.io_utils.rad_var_class.VarZ
+   - simcradarlib.io_utils.rad_var_class.VarTh
+   - simcradarlib.io_utils.rad_var_class.VarDbzh
+   - simcradarlib.io_utils.rad_var_class.Vrad
+   - simcradarlib.io_utils.rad_var_class.Wrad
+   - simcradarlib.io_utils.rad_var_class.Rhohv
+   - simcradarlib.io_utils.rad_var_class.Phidp
+   - simcradarlib.io_utils.rad_var_class.Hght
+   - simcradarlib.io_utils.rad_var_class.DbzV
+   - simcradarlib.io_utils.rad_var_class.Poh
+   - simcradarlib.io_utils.rad_var_class.Vil
+   - simcradarlib.io_utils.rad_var_class.ClassConv
+   - simcradarlib.io_utils.rad_var_class.Snr
+   - simcradarlib.io_utils.rad_var_class.Class
+   - simcradarlib.io_utils.rad_var_class.VilDensity
+   - simcradarlib.io_utils.rad_var_class.VarRate
+   - simcradarlib.io_utils.rad_var_class.VarAcrr
+   - simcradarlib.io_utils.rad_var_class.VarClassId
+   - simcradarlib.io_utils.general_radar_utils
+   - simcradarlib.io_utils.general_radar_utils.get_reader
+   - simcradarlib.io_utils.general_radar_utils.unzip_to_nc
+   - simcradarlib.io_utils.general_radar_utils.get_meta_for_pysteps_from_macro
+   - simcradarlib.io_utils.general_radar_utils.dpc_utm_grid_from_meta_pysteps
+   - simcradarlib.io_utils.exporters
+   - simcradarlib.io_utils.exporters.ExportableVar
+   - simcradarlib.io_utils.bufr_class
+   - simcradarlib.io_utils.bufr_class.Bufr
 
 2. log_utils :
- contiene utilities per ottenere informazioni sull'esecuzione di processi ( lanciati da uno script o
- in una parte dello script principale)
+   contiene utilities per ottenere informazioni sull'esecuzione di processi ( lanciati da uno script o
+   in una parte dello script principale)
 
- Elenco dei sottomoduli, classi e funzioni presenti:
-  - simcradarlib.log_utils
-  - simcradarlib.log_utils.log_exec_process
-  - simcradarlib.log_utils.log_exec_process.log_exec_process.log_endprocess_info
-  - simcradarlib.log_utils.log_exec_process.log_exec_process.log_subprocess_info
+   Elenco dei sottomoduli, classi e funzioni presenti:
+   - simcradarlib.log_utils
+   - simcradarlib.log_utils.log_exec_process
+   - simcradarlib.log_utils.log_exec_process.log_exec_process.log_endprocess_info
+   - simcradarlib.log_utils.log_exec_process.log_exec_process.log_subprocess_info
 
 3. odim :
- contiene utilities per la lettura di file ODIM OPERA v.2.1 di prodotti radar e per la scrittura di campi
- 2D georeferenziati (come la POH) e volumi polari in formato ODIM OPERA v.2.1.
+   contiene utilities per la lettura di file ODIM OPERA v.2.1 di prodotti radar e per la scrittura di campi
+   2D georeferenziati (come la POH) e volumi polari in formato ODIM OPERA v.2.1.
   
- Elenco dei sottomoduli, classi e funzioni presenti:
+  Elenco dei sottomoduli, classi e funzioni presenti:
   - simcradarlib.odim
   - simcradarlib.odim.odim_utils
   - simcradarlib.odim.odim_utils.OdimDset
