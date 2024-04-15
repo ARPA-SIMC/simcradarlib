@@ -13,11 +13,9 @@ Per la documentazione dettagliata dei singoli metodi e classi implementati nei s
 alla documentazione nel codice disponibile in forma 'docstring'.
 
 1. io_utils :
-
-  contiene sottomoduli con classi e funzioni per la lettura di file netCDF, ZLR e BUFR e per la scrittura
-  di file netCDF e BUFR e per la scrittura di campi 2D georeferenziati in formato ODIM OPERA v.2.1 .
- 
-  Elenco dei sottomoduli, classi e funzioni presenti:
+ contiene sottomoduli con classi e funzioni per la lettura di file netCDF, ZLR e BUFR e per la scrittura
+ di file netCDF e BUFR e per la scrittura di campi 2D georeferenziati in formato ODIM OPERA v.2.1 . 
+ Elenco dei sottomoduli, classi e funzioni presenti:
   - simcradarlib.io_utils.structure_class
   - simcradarlib.io_utils.structure_class.StructureBase
   - simcradarlib.io_utils.structure_class.StructVariable
@@ -72,20 +70,20 @@ alla documentazione nel codice disponibile in forma 'docstring'.
   - simcradarlib.io_utils.bufr_class.Bufr
 
 2. log_utils :
-  contiene utilities per ottenere informazioni sull'esecuzione di processi ( lanciati da uno script o
-  in una parte dello script principale)
+ contiene utilities per ottenere informazioni sull'esecuzione di processi ( lanciati da uno script o
+ in una parte dello script principale)
 
-  Elenco dei sottomoduli, classi e funzioni presenti:
+ Elenco dei sottomoduli, classi e funzioni presenti:
   - simcradarlib.log_utils
   - simcradarlib.log_utils.log_exec_process
   - simcradarlib.log_utils.log_exec_process.log_exec_process.log_endprocess_info
   - simcradarlib.log_utils.log_exec_process.log_exec_process.log_subprocess_info
 
 3. odim :
-  contiene utilities per la lettura di file ODIM OPERA v.2.1 di prodotti radar e per la scrittura di campi
-  2D georeferenziati (come la POH) e volumi polari in formato ODIM OPERA v.2.1.
+ contiene utilities per la lettura di file ODIM OPERA v.2.1 di prodotti radar e per la scrittura di campi
+ 2D georeferenziati (come la POH) e volumi polari in formato ODIM OPERA v.2.1.
   
-  Elenco dei sottomoduli, classi e funzioni presenti:
+ Elenco dei sottomoduli, classi e funzioni presenti:
   - simcradarlib.odim
   - simcradarlib.odim.odim_utils
   - simcradarlib.odim.odim_utils.OdimDset
