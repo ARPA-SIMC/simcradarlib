@@ -13,6 +13,7 @@ Per la documentazione dettagliata dei singoli metodi e classi implementati nei s
 alla documentazione nel codice disponibile in forma 'docstring'.
 
 1. io_utils :
+   
    contiene sottomoduli con classi e funzioni per la lettura di file netCDF, ZLR e BUFR e per la scrittura
    di file netCDF e BUFR e per la scrittura di campi 2D georeferenziati in formato ODIM OPERA v.2.1 .
    Elenco dei sottomoduli, classi e funzioni presenti:
@@ -70,6 +71,7 @@ alla documentazione nel codice disponibile in forma 'docstring'.
    - simcradarlib.io_utils.bufr_class.Bufr
 
 2. log_utils :
+   
    contiene utilities per ottenere informazioni sull'esecuzione di processi ( lanciati da uno script o
    in una parte dello script principale)
 
@@ -80,33 +82,33 @@ alla documentazione nel codice disponibile in forma 'docstring'.
    - simcradarlib.log_utils.log_exec_process.log_exec_process.log_subprocess_info
 
 3. odim :
+   
    contiene utilities per la lettura di file ODIM OPERA v.2.1 di prodotti radar e per la scrittura di campi
    2D georeferenziati (come la POH) e volumi polari in formato ODIM OPERA v.2.1.
-  
-  Elenco dei sottomoduli, classi e funzioni presenti:
-  - simcradarlib.odim
-  - simcradarlib.odim.odim_utils
-  - simcradarlib.odim.odim_utils.OdimDset
-  - simcradarlib.odim.odim_utils.OdimDset8bImage
-  - simcradarlib.odim.odim_utils.OdimGroup
-  - simcradarlib.odim.odim_utils.OdimWhat
-  - simcradarlib.odim.odim_utils.OdimWherePolar
-  - simcradarlib.odim.odim_utils.OdimWherePolarDset
-  - simcradarlib.odim.odim_utils.OdimWhereSector
-  - simcradarlib.odim.odim_utils.OdimWhereGeoimage
-  - simcradarlib.odim.odim_utils.OdimWhereCross
-  - simcradarlib.odim.odim_utils.OdimWhereCrossSection
-  - simcradarlib.odim.odim_utils.OdimWhereRhi
-  - simcradarlib.odim.odim_utils.OdimWhereVertProfile
-  - simcradarlib.odim.odim_utils.OdimHow
-  - simcradarlib.odim.odim_utils.OdimHowRadarDset
-  - simcradarlib.odim.odim_utils.OdimHowPolarDset
-  - simcradarlib.odim.odim_utils.OdimHowCartesianImageDset
-  - simcradarlib.odim.odim_utils.OdimHowVertProfileDset
-  - simcradarlib.odim.odim_utils.OdimWhatDset
-  - simcradarlib.odim.odim_utils.odim_pvol
-  - simcradarlib.odim.odim_utils.odim_pvol.OdimHierarchyPvol
-  - simcradarlib.odim.odim_utils.odim_image
+   Elenco dei sottomoduli, classi e funzioni presenti:
+   - simcradarlib.odim
+   - simcradarlib.odim.odim_utils
+   - simcradarlib.odim.odim_utils.OdimDset
+   - simcradarlib.odim.odim_utils.OdimDset8bImage
+   - simcradarlib.odim.odim_utils.OdimGroup
+   - simcradarlib.odim.odim_utils.OdimWhat
+   - simcradarlib.odim.odim_utils.OdimWherePolar
+   - simcradarlib.odim.odim_utils.OdimWherePolarDset
+   - simcradarlib.odim.odim_utils.OdimWhereSector
+   - simcradarlib.odim.odim_utils.OdimWhereGeoimage
+   - simcradarlib.odim.odim_utils.OdimWhereCross
+   - simcradarlib.odim.odim_utils.OdimWhereCrossSection
+   - simcradarlib.odim.odim_utils.OdimWhereRhi
+   - simcradarlib.odim.odim_utils.OdimWhereVertProfile
+   - simcradarlib.odim.odim_utils.OdimHow
+   - simcradarlib.odim.odim_utils.OdimHowRadarDset
+   - simcradarlib.odim.odim_utils.OdimHowPolarDset
+   - simcradarlib.odim.odim_utils.OdimHowCartesianImageDset
+   - simcradarlib.odim.odim_utils.OdimHowVertProfileDset
+   - simcradarlib.odim.odim_utils.OdimWhatDset
+   - simcradarlib.odim.odim_utils.odim_pvol
+   - simcradarlib.odim.odim_utils.odim_pvol.OdimHierarchyPvol
+   - simcradarlib.odim.odim_utils.odim_image	
 
 ## Sviluppi futuri
 Lo sviluppo della libreria proseguirà nell'ottica di completare il porting delle routine esistenti usate
