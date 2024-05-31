@@ -4,7 +4,7 @@
 %{!?srcarchivename: %global srcarchivename %{srcname}-%{version}-%{releaseno}}
 
 
-Name:           python-simcradarlib
+Name:           python3-simcradarlib
 Version:        0.1
 Release:        %{releaseno}%{?dist}
 Summary:        Libreria Python per applicazioni radar di Arpae-SIMC
