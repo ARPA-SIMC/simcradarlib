@@ -39,13 +39,13 @@ def readnc_to_struct(
 
     """
     Funzione che legge un file netCDF e restituisce in output una tupla di due elementi.
-    Il primo elemento della tupla in ouput rappresenta la macrostruttura delle informazioni
+    Il primo elemento della tupla in output rappresenta la macrostruttura delle informazioni
     sul contenuto del file netCDF in formato dizionario: i values sono istanze delle classi
     implementate in simcradarlib.io_utils.structure_class (replicano le strutture di IDL) e le
     corrispondenti keys sono stringhe identificative del tipo di informazione contenuta in
     ciascuna 'struttura'. Il secondo elemento è la matrice dei dati contenuta nel file netCDF.
     ______
-    INPUT: 
+    INPUT:
     - filename  --str  :  nome del file netCDF da leggere comprensivo del path.
     ______
     OUTPUT:
@@ -217,22 +217,28 @@ def readnc_to_struct(
 
     grid_struct = StructGrid()
 
-    try:
+    if "geo_dim" in nc.variables:
         grid_struct.limiti = nc["geo_dim"][:].data
-    except (IndexError, TypeError, AttributeError):
-        module_logger.exception("Lettura limiti griglia fallita")
+    else:
+        module_logger.debug("Non trovo la variabile geo_dim: prima lettura limiti griglia fallita!")
 
-    try:
+    if "mesh_dim" in nc.variables:
         grid_struct.dx = nc["mesh_dim"][:].data[0]
         grid_struct.dy = nc["mesh_dim"][:].data[1]
         grid_struct.units_dx = nc["mesh_dim"].units
         grid_struct.units_dy = nc["mesh_dim"].units
-    except (IndexError, TypeError, AttributeError):
-        module_logger.exception("Lettura passo griglia fallita")
+    else:
+        module_logger.debug("Non trovo la variabile mesh_dim: prima lettura passo griglia fallita!")
 
     try:
-        grid_struct.nx = nc.dimensions['lon'].size
-        grid_struct.ny = nc.dimensions['lat'].size
+        if "lon" and "lat" in nc.dimensions:
+            grid_struct.nx = nc.dimensions["lon"].size
+            grid_struct.ny = nc.dimensions["lat"].size
+        elif "x" and "y" in nc.dimensions:
+            grid_struct.nx = nc.dimensions["x"].size
+            grid_struct.ny = nc.dimensions["y"].size
+        else:
+            module_logger.exception("Non calcolo numero punti griglia")
         module_logger.debug(f"Numero punti griglia nx={grid_struct.nx}, ny={grid_struct.ny}")
     except Exception:
         module_logger.exception("Non calcolo numero punti griglia")
@@ -320,10 +326,25 @@ def readnc_to_struct(
                     except AttributeError:
                         module_logger.warning(f"Non trovato attributo {basic_att}")
                         pass
-            extra_params_var_search = ["offset", "scale_factor", "n_byte", "val_compresso"]
+            extra_params_var_search = [
+                "offset",
+                "scale_factor",
+                "n_byte",
+                "val_compresso",
+                "_FillValue",
+                "valid_min",
+                "valid_max",
+                "valid_range",
+            ]
             for param_searched in extra_params_var_search:
-                if param_searched in nc[v].ncattrs():
-                    campo.addparams(param_searched, nc[v][param_searched])
+                if hasattr(nc[v], param_searched):
+                    try:
+                        campo.addparams(param_searched, nc[v].getncattr(param_searched))
+                    except Exception:
+                        # campo.addparams(param_searched, nc[v].__dict__[param_searched])
+                        module_logger.exception(
+                            f"param {param_searched} non trovato per var={v}.\nParametri disponibili:\n{nc[v].__dict__.items()}"
+                        )
             try:
                 campi[v] = campo
                 campi_data[v] = nc[v][:].data.astype(np.float32)
@@ -348,16 +369,48 @@ def readnc_to_struct(
         for p in tmp_varp:
             proj_struct = StructProjection()
             proj_struct.proj_name = nc[p].projection_name if hasattr(nc[p], "projection_name") else None
-            try:
-                proj_struct.center_longitude = grid_struct.dx * float(grid_struct.nx - 1) * 0.5 + grid_struct.limiti[1]
-                proj_struct.center_latitude = grid_struct.dy * float(grid_struct.ny - 1) * 0.5 + grid_struct.limiti[0]
-            except (TypeError, AttributeError, IndexError):
-                module_logger.exception("Coordinate del centro del grigliato non lette")
-                # manca earth radius che non so dove pescare quindi uso il try successivo che replica anche idl
+            grid_mapping_name = nc[p].grid_mapping_name if hasattr(nc[p], "grid_mapping_name") else None
 
+            if grid_mapping_name == "idl-lat-lon":
+                try:
+                    proj_struct.center_longitude = (
+                        grid_struct.dx * float(grid_struct.nx - 1) * 0.5 + grid_struct.limiti[1]
+                    )
+                    proj_struct.center_latitude = (
+                        grid_struct.dy * float(grid_struct.ny - 1) * 0.5 + grid_struct.limiti[0]
+                    )
+                except (TypeError, AttributeError, IndexError):
+                    module_logger.exception("Coordinate del centro del grigliato non lette")
+                    # manca earth radius che non so dove pescare quindi uso il try successivo che replica anche idl
+            elif grid_mapping_name is not None:
+                # se non è file da IDL allora lo leggo così:
+                if hasattr(nc[p], "geo_dim"):
+                    grid_struct.limiti = nc[p].geo_dim
+                if hasattr(nc[p], "mesh_dim"):
+                    grid_struct.dx = nc[p].mesh_dim[0]
+                    grid_struct.dy = nc[p].mesh_dim[1]
+                if hasattr(nc[p], "mesh_dim_units"):
+                    grid_struct.units_dx = nc[p].mesh_dim_units[0]
+                    grid_struct.units_dy = nc[p].mesh_dim_units[1]
+                try:
+                    proj_struct.center_longitude = (
+                        grid_struct.dx * float(grid_struct.nx - 1) * 0.5 + grid_struct.limiti[1]
+                    )
+                    proj_struct.center_latitude = (
+                        grid_struct.dy * float(grid_struct.ny - 1) * 0.5 + grid_struct.limiti[0]
+                    )
+                except Exception:
+                    module_logger.exception(
+                        "Non ho trovato mesh_dim e geo_dim come attributi della grid_mapping_variable,\nNon calcolo center_longitude e center_latitude."
+                    )
+            else:
+                # quando grid_mapping_name è None, il netcdf non è convenzionale e aggiungo tutto
+                # quello che è contenuto nella variabile S1 di proiezione come attributi
+                # dell'istanza di pyproj, con il try successivo.
+                pass
             try:  # aggiungo il resto come extra params per replicare idl
                 for att_p in nc[p].ncattrs():
-                    if att_p not in proj_struct.__dict__.keys():
+                    if att_p not in list(proj_struct.__dict__.keys()) + ["mesh_dim", "geo_dim", "mesh_dim_units"]:
                         setattr(proj_struct, att_p, nc[p].getncattr(att_p))
             except (TypeError, AttributeError, IndexError):
                 pass
@@ -382,7 +435,14 @@ def readnc_to_struct(
     struct_source = StructSource()
 
     try:
-        struct_source.name_source = nc.RADARS_NAME
+        if hasattr(nc, "source"):
+            struct_source.name_source = nc.source
+        elif hasattr(nc, "Source"):
+            struct_source.name_source = nc.Source
+        elif hasattr(nc, "RADARS_NAME"):
+            struct_source.name_source = nc.RADARS_NAME
+        else:
+            pass
     except AttributeError:
         module_logger.exception("Lettura source non possibile")
 
