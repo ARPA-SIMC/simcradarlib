@@ -108,7 +108,27 @@ alla documentazione nel codice disponibile in forma 'docstring'.
    - simcradarlib.odim.odim_utils.OdimWhatDset
    - simcradarlib.odim.odim_utils.odim_pvol
    - simcradarlib.odim.odim_utils.odim_pvol.OdimHierarchyPvol
-   - simcradarlib.odim.odim_utils.odim_image	
+   - simcradarlib.odim.odim_utils.odim_image
+
+4. geo_utils :
+
+   contiene utilities per la georeferenziazione di dati radar.
+   Elenco dei sottomoduli, classi e funzioni presenti:
+   - simcradarlib.geo_utils
+   - simcradarlib.geo_utils.georef
+   - simcradarlib.geo_utils.georef.bin_altitude
+   - simcradarlib.geo_utils.georef.site_distance
+   - simcradarlib.geo_utils.georef.get_earth_radius
+   - simcradarlib.geo_utils.georef.spherical_to_xyz
+
+5. visualization :
+
+   contiene utilities per la visualizzazione di prodotti e dati radar.
+   Elenco dei sottomoduli, classi e funzioni presenti:
+   - simcradarlib.visualization
+   - simcradarlib.visualization.plot_ppi
+   - simcradarlib.visualization.plot_ppi.plot_ppi_curvilinear
+   - simcradarlib.visualization.plot_ppi.plot_ppi_from_vol
 
 ## Sviluppi futuri
 Lo sviluppo della libreria proseguirà nell'ottica di completare il porting delle routine esistenti usate
