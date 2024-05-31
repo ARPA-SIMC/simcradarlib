@@ -1,5 +1,5 @@
 %global srcname simcradarlib
-%global releaseno 3
+%global releaseno 4
 # Note: define _srcarchivename in Travis build only.
 %{!?srcarchivename: %global srcarchivename %{srcname}-%{version}-%{releaseno}}
 
