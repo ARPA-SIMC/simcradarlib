@@ -1,10 +1,10 @@
 %global srcname simcradarlib
-%global releaseno 4
+%global releaseno 5
 # Note: define _srcarchivename in Travis build only.
 %{!?srcarchivename: %global srcarchivename %{srcname}-%{version}-%{releaseno}}
 
 
-Name:           python3-simcradarlib
+Name:           python-simcradarlib
 Version:        0.1
 Release:        %{releaseno}%{?dist}
 Summary:        Libreria Python per applicazioni radar di Arpae-SIMC
@@ -25,6 +25,11 @@ BuildRequires:  python3-cftime
 BuildRequires:  python3-matplotlib
 BuildRequires:  python3-gdal
 
+%description
+Libreria Python per applicazioni radar di Arpae-SIMC
+
+%package -n python3-simcradarlib
+Summary:        Libreria Python per applicazioni radar di Arpae-SIMC
 Requires:       python3-netcdf4
 Requires:       python3-pyproj
 Requires:       python3-h5py
@@ -32,8 +37,7 @@ Requires:       python3-cftime
 Requires:       python3-matplotlib
 Requires:       python3-gdal
 
-
-%description
+%description -n python3-simcradarlib
 Libreria Python per applicazioni radar di Arpae-SIMC
 
 %prep
@@ -46,11 +50,10 @@ Libreria Python per applicazioni radar di Arpae-SIMC
 rm -rf $RPM_BUILD_ROOT
 %py3_install
 
-
 %check
 %{__python3} setup.py test
 
-%files
+%files -n python3-simcradarlib
 %license LICENSE
 %doc README.md
 # For noarch packages: sitelib
