@@ -172,6 +172,11 @@ class OdimHierarchyPvol(StructBase):
         |          +attrs:
         |              - {attributi di classe OdimHowPolarDset
         |                 e di classe OdimHowRadarDset}
+
+    # Modifiche:
+    29-04-2024: correzione nel metodo get_data_by_elangle per tener conto che nei volumi
+    processati da AddCleanerQuantities, la grandezza "Z_VD" è presente a tutte le elevazioni
+    tranne l'ultima.
     """
 
     root_what: OdimWhat
@@ -344,7 +349,10 @@ class OdimHierarchyPvol(StructBase):
         """
 
         # try:
-        indexq = self.varsnames.index(quantity)
+        varsnames_elangle = self.varsnames.copy()
+        if elangle==max(self.elangles) and "Z_VD" in varsnames_elangle:
+            varsnames_elangle.remove("Z_VD")
+        indexq = varsnames_elangle.index(quantity)
         # except ValueError:
         # indexq = self.varsnames.index(quantity.encode("utf-8"))
 
