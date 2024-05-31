@@ -141,5 +141,5 @@ drive e verranno resi disponibili Notebooks di esempio.
 
 `simcradarlib` è rilasciato sotto licenza GPLv3, ad eccezione di
 `simcradarlib.geo_utils`, che usa codice della libreria
-[`wradlib`][https://wradlib.org/], rilasciata sotto licenza MIT (si veda il
+[`wradlib`](https://wradlib.org/), rilasciata sotto licenza MIT (si veda il
 modulo per maggiori informazioni sulla licenza).
