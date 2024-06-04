@@ -1,11 +1,11 @@
 %global srcname simcradarlib
-%global releaseno 5
+%global releaseno 1
 # Note: define _srcarchivename in Travis build only.
 %{!?srcarchivename: %global srcarchivename %{srcname}-%{version}-%{releaseno}}
 
 
 Name:           python-simcradarlib
-Version:        0.1
+Version:        0.2
 Release:        %{releaseno}%{?dist}
 Summary:        Libreria Python per applicazioni radar di Arpae-SIMC
 License:        GPLv3
@@ -24,6 +24,7 @@ BuildRequires:  python3-h5py
 BuildRequires:  python3-cftime
 BuildRequires:  python3-matplotlib
 BuildRequires:  python3-gdal
+BuildRequires:  python3-yaml
 
 %description
 Libreria Python per applicazioni radar di Arpae-SIMC
@@ -36,6 +37,7 @@ Requires:       python3-h5py
 Requires:       python3-cftime
 Requires:       python3-matplotlib
 Requires:       python3-gdal
+Requires:       python3-yaml
 
 %description -n python3-simcradarlib
 Libreria Python per applicazioni radar di Arpae-SIMC
@@ -47,7 +49,6 @@ Libreria Python per applicazioni radar di Arpae-SIMC
 %py3_build
 
 %install
-rm -rf $RPM_BUILD_ROOT
 %py3_install
 
 %check
@@ -57,10 +58,13 @@ rm -rf $RPM_BUILD_ROOT
 %license LICENSE
 %doc README.md
 # For noarch packages: sitelib
-%{python3_sitelib}/%{srcname}/
-%{python3_sitelib}/%{srcname}-%{version}-py%{python3_version}.egg-info/
+%{python3_sitelib}/%{srcname}/*
+%{python3_sitelib}/%{srcname}-%{version}-py%{python3_version}.egg-info/*
 
 
 %changelog
+* Tue Jun  4 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 0.2-1
+- Fixed subpackages installation
+
 * Fri May 31 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 0.1-1
 - First package
