@@ -189,6 +189,7 @@ class OdimHierarchyImage(StructBase):
                 "xsize",
                 "ysize",
                 "xscale",
+                "yscale",
                 "LL_lon",
                 "LL_lat",
                 "UL_lon",

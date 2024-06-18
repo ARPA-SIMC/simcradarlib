@@ -169,10 +169,10 @@ class OdimDset8bImage(OdimDset):
         """
 
         try:
-            g = hf.require_dataset(self.hierarchy, self.data.shape, self.data.dtype)
+            g = hf.require_dataset(self.hierarchy, self.data.shape, np.array(self.data).dtype)
         except ValueError:
             self.odim_create(hf)
-            g = hf.require_dataset(self.hierarchy, self.data.shape, self.data.dtype)
+            g = hf.require_dataset(self.hierarchy, self.data.shape, np.array(self.data).dtype)
         for attr in attrslist:
             if self.struct_hasitem(attr):
                 attr_val = self.struct_getitem(attr)
