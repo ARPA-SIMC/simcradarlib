@@ -136,3 +136,10 @@ dalle procedure operative in Python.
 
 E' in corso la scrittura di un manuale di documentazione e guida all'uso della libreria come documento
 drive e verranno resi disponibili Notebooks di esempio.
+
+## Licenza
+
+`simcradarlib` è rilasciato sotto licenza GPLv3, ad eccezione di
+`simcradarlib.geo_utils`, che usa codice della libreria
+[`wradlib`](https://wradlib.org/), rilasciata sotto licenza MIT (si veda il
+modulo per maggiori informazioni sulla licenza).
