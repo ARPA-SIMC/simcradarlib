@@ -268,7 +268,9 @@ class ExportableVar(StructVariable):
         - mesh_dims       --np.array                    : ampiezze orizzontale e verticale della cella del
                                                           grigliato (in km).
         - ps              --StructProjection            : istanza di classe StructProjection.
-
+        - source          --str                         : nome della sorgente dati ('gat' per Gattatico, 'spc'
+                                                          per San Pietro Capofiume, 'compo' per Composito).
+        - product_name    --str                         : sigla del tipo di prodotto.
         """
         output_nc = Dataset(out_filename, "w", format="NETCDF4")
         output_nc.description = description
