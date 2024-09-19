@@ -622,7 +622,7 @@ class Bufr:
                     pyprojstring = "+proj=utm +zone=32 +k_0=0.9996 +ellps=intl"
                     piem_proj = pyproj.Proj(pyprojstring)
                     proj_struct.addparams("pyprojstring", pyprojstring)
-                    proj_struct.proj_name = piem_proj.name  # = 'utm'
+                    #proj_struct.proj_name = piem_proj.name  # = 'utm'
                     # oppure posso scrivere proj_name'utm intl' (International 1909 (Hayford) )
 
                     index_ = self.meta.loc[
