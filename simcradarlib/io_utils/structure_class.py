@@ -100,7 +100,7 @@ class StructVariable(StructBase):
 
     accum_time_h: Optional[float] = None
 
-    """
+    __doc__ =  """
     Classe figlia di StructBase con attributi dell'istanza:
 
     -name                   --str    (default=None)  : nome della variabile.
@@ -266,7 +266,7 @@ class StructVariable(StructBase):
 
 class StructCoords(StructBase):
 
-    """
+    __doc__ =  """
     Classe figlia di StructBase con attributi dell'istanza:
 
     -name                   --str          (default=None)  : nome del tipo di coordinata.
@@ -306,7 +306,7 @@ class StructGrid(StructBase):
     ny: int
     name: str
 
-    """
+    __doc__ = """
     Classe figlia di StructBase con attributi dell'istanza:
 
     -limiti            --np.ndarray((4,))  (default=None)  : array contenente le coordinate degli estremi
@@ -368,7 +368,7 @@ class StructProjection(StructBase):
     x_offset: Optional[float] = None
     y_offset: Optional[float] = None
 
-    """
+    __doc__ = """
     Classe figlia di StructBase con attributi dell'istanza:
 
     -center_longitude        --np.float64       (default=None)  : longitudine del centro di proiezione.
@@ -394,7 +394,7 @@ class StructProjection(StructBase):
 
 class StructProduct(StructBase):
 
-    """
+    __doc__ = """
     Classe figlia di StructBase con attributi dell'istanza:
 
     -name                 --str     (default=None)  : nome del tipo di prodotto.
@@ -416,7 +416,7 @@ class StructProduct(StructBase):
 
 class StructTime(StructBase):
 
-    """
+    __doc__ = """
     Classe figlia di StructBase con attributi dell'istanza:
 
     -date_time_validita   --datetime  (default=None)  : oggetto datetime.datetime che rappresenta
@@ -449,7 +449,7 @@ class StructTime(StructBase):
 
 class StructSource(StructBase):
 
-    """
+    __doc__ = """
     Classe figlia di StructBase con attributi dell'istanza:
 
     -name_source   --str  (default="Unknown") : nome della sorgente dei dati.
@@ -482,7 +482,7 @@ class StructSource(StructBase):
 
 class RadarProduct(StructProduct):
 
-    """
+    __doc__ = """
     Classe figlia di StructProduct per implementare i prodotti radar e
     sostituisce la tabella /autofs/radar/radar/file_x_idl/tabelle/prodotti.txt
     e /autofs/radar/radar/idl/general_utilities/read_prod_tab.pro.

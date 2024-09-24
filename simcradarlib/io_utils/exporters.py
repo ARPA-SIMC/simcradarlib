@@ -10,7 +10,7 @@ from typing import Optional
 
 class ExportableVar(StructVariable):
 
-    """
+    __doc__="""
     Classe figlia di StructVariable, definita in simcradarlib.io_utils.structure_class, che implementa
     un campo fisico georeferenziato 2D o ND per N>2 (forecast), esportabile in formato netCDF o ODIM OPERA.
     NB: Questa classe permette l'export in ODIM soltanto per campi 2D, mentre per campi 3D usare il
@@ -29,7 +29,7 @@ class ExportableVar(StructVariable):
     -dset_order             --int    (default=1)     : indice del gruppo "root/dataset<dset_order>".
                                                        Esempio: dset_order=1 per "root/dataset1"
     -data_order             --int    (default=1)     : indice del gruppo "root/dataset<dset_order>/data<data_order>".
-                                                       Esempio: set_order=1, data_order=2 per
+                                                       Esempio: dset_order=1, data_order=2 per
                                                                 "root/dataset1/data2"
     -dset_prod_name         --str    (default="")    : valore dell'attributo 'product' del gruppo
                                                        "root/dataset<dset_order>/what".
