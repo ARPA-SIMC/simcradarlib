@@ -335,6 +335,8 @@ def readnc_to_struct(
                 "valid_min",
                 "valid_max",
                 "valid_range",
+                "var_missing",
+                "undetectable"
             ]
             for param_searched in extra_params_var_search:
                 if hasattr(nc[v], param_searched):
