@@ -219,6 +219,9 @@ def readnc_to_struct(
 
     if "geo_dim" in nc.variables:
         grid_struct.limiti = nc["geo_dim"][:].data
+    elif "geo_limits" in nc.variables:
+        # prima del 2013/04/09 il nome dei limiti del grigliato era diverso
+        grid_struct.limiti = nc["geo_limits"][:].data
     else:
         module_logger.debug("Non trovo la variabile geo_dim: prima lettura limiti griglia fallita!")
 
@@ -227,6 +230,12 @@ def readnc_to_struct(
         grid_struct.dy = nc["mesh_dim"][:].data[1]
         grid_struct.units_dx = nc["mesh_dim"].units
         grid_struct.units_dy = nc["mesh_dim"].units
+    elif "grid_mesh" in nc.variables:
+        # prima del 2023/04/09 il nome mesh_dim era grid_mesh nei netcdf.
+        grid_struct.dx = nc["grid_mesh"][:].data[0]
+        grid_struct.dy = nc["grid_mesh"][:].data[1]
+        grid_struct.units_dx = nc["grid_mesh"].units
+        grid_struct.units_dy = nc["grid_mesh"].units
     else:
         module_logger.debug("Non trovo la variabile mesh_dim: prima lettura passo griglia fallita!")
 
