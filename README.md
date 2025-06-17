@@ -1,7 +1,7 @@
 [![Build Status](https://simc.arpae.it/moncic-ci/simcradarlib/rocky8.png)](https://simc.arpae.it/moncic-ci/simcradarlib/)
 [![Build Status](https://simc.arpae.it/moncic-ci/simcradarlib/rocky9.png)](https://simc.arpae.it/moncic-ci/simcradarlib/)
-[![Build Status](https://simc.arpae.it/moncic-ci/simcradarlib/fedora38.png)](https://simc.arpae.it/moncic-ci/simcradarlib/)
 [![Build Status](https://simc.arpae.it/moncic-ci/simcradarlib/fedora40.png)](https://simc.arpae.it/moncic-ci/simcradarlib/)
+[![Build Status](https://simc.arpae.it/moncic-ci/simcradarlib/fedora42.png)](https://simc.arpae.it/moncic-ci/simcradarlib/)
 [![Build Status](https://copr.fedorainfracloud.org/coprs/simc/stable/package/python-simcradarlib/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/simc/stable/package/python-simcradarlib/)
 
 # simcradarlib
