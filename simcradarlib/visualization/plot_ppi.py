@@ -149,7 +149,10 @@ def plot_ppi_curvilinear(
         logging.exception("cmap o livelli = None. Use Greys.")
         norm = colors.Normalize(0, 1)
         cmap = cm.Blues
-    clbclass = fig.colorbar(cm.ScalarMappable(norm, cmap), orientation="horizontal", shrink=0.8, pad=0.03, aspect=40, ax=plt.gca())
+    cmp = cm.ScalarMappable(norm, cmap)
+    cmp.set_array(data)
+    print("set array done")
+    clbclass = fig.colorbar(cmp, orientation="horizontal", shrink=0.8, pad=0.03, aspect=40, ax=plt.gca())
     clbclass.set_label(label, labelpad=-0.4, y=1.16, rotation=0, fontsize=10)
     if livelli is not None:
         clbclass.set_ticklabels(labels_ticks)
