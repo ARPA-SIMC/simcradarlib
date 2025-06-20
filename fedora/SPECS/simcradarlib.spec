@@ -5,7 +5,7 @@
 
 
 Name:           python-simcradarlib
-Version:        0.6
+Version:        0.7
 Release:        %{releaseno}%{?dist}
 Summary:        Libreria Python per applicazioni radar di Arpae-SIMC
 License:        GPLv3
