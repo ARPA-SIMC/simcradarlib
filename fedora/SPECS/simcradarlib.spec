@@ -5,7 +5,7 @@
 
 
 Name:           python-simcradarlib
-Version:        0.8
+Version:        0.7
 Release:        %{releaseno}%{?dist}
 Summary:        Libreria Python per applicazioni radar di Arpae-SIMC
 License:        GPLv3
@@ -52,7 +52,7 @@ Libreria Python per applicazioni radar di Arpae-SIMC
 %py3_install
 
 %check
-%{__python3} setup.py test
+%{__python3} tests/runtests.py
 
 %files -n python3-simcradarlib
 %license LICENSE
@@ -63,9 +63,6 @@ Libreria Python per applicazioni radar di Arpae-SIMC
 
 
 %changelog
-* Fri Jun 20 2025 Daniele Branchini <dbranchini@arpae.it> - 0.8-1
-- resolved: colorbar->ScalarMappable->setarray
-
 * Fri Jun 20 2025 Emanuele Di Giacomo <edigiacomo@arpae.it> - 0.7-1
 - Add YAML file to package
 
