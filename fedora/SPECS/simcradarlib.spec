@@ -52,7 +52,7 @@ Libreria Python per applicazioni radar di Arpae-SIMC
 %py3_install
 
 %check
-%{__python3} tests/runtests.py
+%{__python3} -m unittest tests/runtests.py
 
 %files -n python3-simcradarlib
 %license LICENSE
