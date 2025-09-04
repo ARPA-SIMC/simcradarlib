@@ -1,5 +1,5 @@
 %global srcname simcradarlib
-%global releaseno 1
+%global releaseno 2
 # Note: define _srcarchivename in Travis build only.
 %{!?srcarchivename: %global srcarchivename %{srcname}-%{version}-%{releaseno}}
 
@@ -63,6 +63,9 @@ Libreria Python per applicazioni radar di Arpae-SIMC
 
 
 %changelog
+* Thu Sep  4 2025 Daniele Branchini <dbranchini@arpae.it> - 0.7-2
+- Removed deprecated setup.py test from spec file
+
 * Fri Jun 20 2025 Emanuele Di Giacomo <edigiacomo@arpae.it> - 0.7-1
 - Add YAML file to package
 
