@@ -1,4 +1,5 @@
 from simcradarlib.odim.odim_utils import (
+    OdimRoot,
     OdimDset,
     OdimWhat,
     OdimWherePolar,
@@ -23,12 +24,14 @@ class OdimHierarchyPvol(StructBase):
     Le classi utilizzate per implementare gli oggetti del file ODIM
     sono implementate in simcradarlib.odim.odim_utils .
     Sono le classi OdimWhat, OdimWhere, OdimHow, OdimWhatDset,
-    OdimWherePolarDset, OdimHowRadarDset, OdimHowPolarDset.
+    OdimWherePolarDset, OdimHowRadarDset, OdimHowPolarDset, OdimRoot.
 
     Classe figlia di simcradarlib.io_utils.structure_class.StructBase
     con attributi dell'istanza (assegnati tramite il metodo di classe
     OdimHierarchyPvol.setistance() descritto successivamente):
 
+    -root                   --OdimRoot        : istanza della classe OdimRoot che
+                                                implementa il root.
     -root_what:             --OdimWhat        : istanza della classe OdimWhat che
                                                 implementa il gruppo "what" del root.
     -root_where:            --OdimWherePolar  : istanza della classe OdimWherePolar
@@ -178,7 +181,7 @@ class OdimHierarchyPvol(StructBase):
     processati da AddCleanerQuantities, la grandezza "Z_VD" è presente a tutte le elevazioni
     tranne l'ultima.
     """
-
+    root: OdimRoot
     root_what: OdimWhat
     root_where: OdimWherePolar
     root_how: OdimHow
@@ -200,6 +203,7 @@ class OdimHierarchyPvol(StructBase):
 
     def setistance(
         self,
+        root: OdimRoot,
         root_what: OdimWhat,
         root_where: OdimWherePolar,
         root_how: OdimHow,
@@ -220,6 +224,7 @@ class OdimHierarchyPvol(StructBase):
 
         INPUT: (dettagli nella documentazione di OdimHierarchyPvol)
 
+        -root                      --OdimRoot
         -root_what                 --OdimWhat
         -root_where                --OdimWhere
         -root_how                  --OdimHow
@@ -439,6 +444,7 @@ class OdimHierarchyPvol(StructBase):
         """
 
         hf = h5py.File(out_filename, "w")
+        self.root.odim_setglobattrs(hf)
         self.root_what.odim_create(hf)
         self.root_what.odim_setattrs(hf, ["object", "version", "date", "time", "source"])
 
@@ -512,7 +518,7 @@ class OdimHierarchyPvol(StructBase):
         """
 
         hr = h5py.File(filename, "r")
-
+        root=OdimRoot(dict(hr.attrs))
         gd_what_list = []
         gd_where_list = []
         gd_how_polar_list = []
@@ -612,6 +618,7 @@ class OdimHierarchyPvol(StructBase):
 
         # poi costruisco ODIM_HIERARCHY_PVOL()
         self.setistance(
+            root=root,
             root_what=root_what,
             root_where=root_where,
             root_how=root_how,

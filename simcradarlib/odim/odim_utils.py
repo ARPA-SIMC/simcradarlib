@@ -46,6 +46,55 @@ Ogni classe ha il metodo di istanza (talvolta ereditato):
     per assegnare attributi a un gruppo o dataset di un file ODIM aperto in scrittura.
 """
 
+class OdimRoot(StructBase):
+
+    """
+    Classe che implementa il root di un ODIM OPERA v.2.1.
+    Eredita da simcradarlib.io_utils.structure_class.StructBase
+    con attributi dell'istanza:
+
+    -hierarchy    --str : stringa del livello gerarchico nell'ODIM,
+                          settata a "./".
+    -**attributi opzionali passati in formato dizionario nell'
+     inizializzazione dell'istanza. Le chiavi sono usate come
+     nomi degli attributi e i values come valori corrispondenti.
+
+     ______________________Esempio____________________________
+    Si può implementare un root di ODIM come istanza di OdimRoot:
+    
+    root=OdimRoot({'Conventions':'ODIM_H5/V2_1'})
+"""
+
+    def __init__(self, globattrs_dict: dict = {}):
+        super().__init__()
+        self.hierarchy='./'
+        self.addparams( list(globattrs_dict.keys()), list(globattrs_dict.values()))
+            
+    def odim_setglobattrs(self, hf: h5py._hl.files.File) -> None:
+        """
+        Metodo di istanza della classe OdimRoot per assegnare
+        attributi globali in un file ODIM.
+        
+        INPUT:
+         -hf --h5py._hl.files.File : oggetto di h5py corrispondente al file ODIM
+                                    aperto in scrittura.
+
+        _____________________________Esempio__________________________________
+        Si può assegnare attributo globale 'Conventions' ad un ODIM aperto in 
+        scrittura con h5py così:
+        
+        root=OdimRoot({'Conventions':'ODIM_H5/V2_1'})
+        hf = h5py.File('nomefile.hdf','w')
+        root.odim_setglobattrs(hf)
+        """
+        for attrname, attr in self.__dict__.items():
+            if attrname=='hierarchy':
+                continue
+            elif type(attr) == str:
+                hf.attrs.__setitem__(attrname, np.bytes_(attr))
+            else:
+                hf.attrs.__setitem__(attrname, attr)
+        
 
 class OdimDset(StructBase):
 
@@ -67,7 +116,6 @@ class OdimDset(StructBase):
     istanza = OdimDset(data=np.ndarray,
                        hierarchy="dataset1/data1/data")
     """
-
     def __init__(self, data: np.ndarray, hierarchy: str):
         super().__init__()
         self.data = data
@@ -95,7 +143,6 @@ class OdimDset(StructBase):
         hf = h5py.File('nomefile.hdf','w')
         istanza.odim_create(hf)
         """
-
         hf.create_dataset(
             self.hierarchy,
             shape=self.data.shape,
@@ -170,7 +217,7 @@ class OdimDset8bImage(OdimDset):
 
         try:
             g = hf.require_dataset(self.hierarchy, self.data.shape, np.array(self.data).dtype)
-        except ValueError:
+        except (ValueError,TypeError):
             self.odim_create(hf)
             g = hf.require_dataset(self.hierarchy, self.data.shape, np.array(self.data).dtype)
         for attr in attrslist:

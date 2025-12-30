@@ -1,4 +1,5 @@
 from simcradarlib.odim.odim_utils import (
+    OdimRoot,
     OdimDset8bImage,
     OdimWhat,
     OdimWhereGeoimage,
@@ -26,6 +27,8 @@ class OdimHierarchyImage(StructBase):
     Classe figlia di simcradarlib.io_utils.structure_class.StructBase con
     attributi dell'istanza:
 
+    -root                   --OdimRoot        : istanza della classe OdimRoot che
+                                                implementa il root.
     -root_what:             --OdimWhat        : istanza della classe OdimWhat che
                                                 implementa il gruppo "what" del root.
     -root_where:          --OdimWhereGeoimage : istanza della classe OdimWhereGeoimage
@@ -73,7 +76,7 @@ class OdimHierarchyImage(StructBase):
         |          +attrs:
         |              - {attributi di classe OdimHow}
     """
-
+    root: OdimRoot
     root_what: OdimWhat
     root_where: OdimWhereGeoimage
     root_how: OdimHow
@@ -88,6 +91,7 @@ class OdimHierarchyImage(StructBase):
 
     def setistance(
         self,
+        root: OdimRoot,
         root_what: OdimWhat,
         root_where: OdimWhereGeoimage,
         root_how: OdimHow,
@@ -102,6 +106,7 @@ class OdimHierarchyImage(StructBase):
         consultare documentazione della classe OdimHierarchyImage).
 
         INPUT:
+        -root                      --OdimRoot
         -root_what                 --OdimWhat
         -root_where                --OdimWhereGeoimage
         -root_how                  --OdimHow
@@ -109,7 +114,7 @@ class OdimHierarchyImage(StructBase):
         -dataset                   --OdimDset8bImage
         -group_data_what           --OdimWhatDset
         """
-
+        self.root = root
         self.root_what = root_what
         self.root_where = root_where
         self.root_how = root_how
@@ -178,6 +183,7 @@ class OdimHierarchyImage(StructBase):
         """
 
         hf = h5py.File(out_filename, "w")
+        self.root.odim_setglobattrs(hf)
         self.root_what.odim_create(hf)
         self.root_what.odim_setattrs(hf, ["object", "version", "date", "time", "source"])
 
@@ -235,6 +241,7 @@ class OdimHierarchyImage(StructBase):
         """
 
         hr = h5py.File(filename, "r")
+        root=OdimRoot(dict(hr.attrs))
         root_what = OdimWhat(
             hierarchy="what",
             obj=hr["what"].attrs["object"],
@@ -282,6 +289,6 @@ class OdimHierarchyImage(StructBase):
         self.get_attrs_from_odimgroup(["CLASS", "IMAGE_VERSION"], hr["dataset1/data1/data"], dataset)
         hr.close()
 
-        self.setistance(root_what, root_where, root_how, dataset_what, dataset, data_what)
+        self.setistance(root, root_what, root_where, root_how, dataset_what, dataset, data_what)
 
         return None
