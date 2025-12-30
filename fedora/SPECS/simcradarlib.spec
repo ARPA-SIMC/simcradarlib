@@ -1,11 +1,11 @@
 %global srcname simcradarlib
-%global releaseno 1
+%global releaseno 2
 # Note: define _srcarchivename in Travis build only.
 %{!?srcarchivename: %global srcarchivename %{srcname}-%{version}-%{releaseno}}
 
 
 Name:           python-simcradarlib
-Version:        0.7
+Version:        0.8
 Release:        %{releaseno}%{?dist}
 Summary:        Libreria Python per applicazioni radar di Arpae-SIMC
 License:        GPLv3
@@ -52,7 +52,7 @@ Libreria Python per applicazioni radar di Arpae-SIMC
 %py3_install
 
 %check
-%{__python3} setup.py test
+%{__python3} -m unittest tests/runtests.py
 
 %files -n python3-simcradarlib
 %license LICENSE
@@ -63,6 +63,12 @@ Libreria Python per applicazioni radar di Arpae-SIMC
 
 
 %changelog
+* Thu Sep  4 2025 Daniele Branchini <dbranchini@arpae.it> - 0.8-2
+- Removed deprecated setup.py test from spec file
+
+* Fri Jun 20 2025 Daniele Branchini <dbranchini@arpae.it> - 0.8-1
+- resolved: colorbar->ScalarMappable->setarray
+
 * Fri Jun 20 2025 Emanuele Di Giacomo <edigiacomo@arpae.it> - 0.7-1
 - Add YAML file to package
 
