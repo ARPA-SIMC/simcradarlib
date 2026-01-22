@@ -1,5 +1,5 @@
 %global srcname simcradarlib
-%global releaseno 1
+%global releaseno 2
 # Note: define _srcarchivename in Travis build only.
 %{!?srcarchivename: %global srcarchivename %{srcname}-%{version}-%{releaseno}}
 
@@ -59,10 +59,13 @@ Libreria Python per applicazioni radar di Arpae-SIMC
 %doc README.md
 # For noarch packages: sitelib
 %{python3_sitelib}/%{srcname}/*
-#{python3_sitelib}/%{srcname}-%{version}-py%{python3_version}.egg-info/*
+%{python3_sitelib}/%{srcname}-%{version}-py%{python3_version}.egg-info/*
 
 
 %changelog
+* Thu Jan 22 2026 Daniele Branchini  <dbranchini@arpae.it> - 0.9-2
+- Fixed version in sources
+
 * Thu Jan 22 2026 Daniele Branchini  <dbranchini@arpae.it> - 0.9-1
 - Added `odim_operations.py`
 
