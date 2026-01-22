@@ -59,7 +59,7 @@ Libreria Python per applicazioni radar di Arpae-SIMC
 %doc README.md
 # For noarch packages: sitelib
 %{python3_sitelib}/%{srcname}/*
-%{python3_sitelib}/%{srcname}-%{version}-py%{python3_version}.egg-info/*
+#{python3_sitelib}/%{srcname}-%{version}-py%{python3_version}.egg-info/*
 
 
 %changelog
