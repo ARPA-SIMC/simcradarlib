@@ -1,11 +1,11 @@
 %global srcname simcradarlib
-%global releaseno 2
+%global releaseno 1
 # Note: define _srcarchivename in Travis build only.
 %{!?srcarchivename: %global srcarchivename %{srcname}-%{version}-%{releaseno}}
 
 
 Name:           python-simcradarlib
-Version:        0.8
+Version:        0.9
 Release:        %{releaseno}%{?dist}
 Summary:        Libreria Python per applicazioni radar di Arpae-SIMC
 License:        GPLv3
@@ -63,6 +63,9 @@ Libreria Python per applicazioni radar di Arpae-SIMC
 
 
 %changelog
+* Thu Jan 22 2026 Daniele Branchini  <dbranchini@arpae.it> - 0.9-1
+- Added `odim_operations.py`
+
 * Thu Sep  4 2025 Daniele Branchini <dbranchini@arpae.it> - 0.8-2
 - Removed deprecated setup.py test from spec file
 
