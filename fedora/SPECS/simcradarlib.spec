@@ -1,11 +1,11 @@
 %global srcname simcradarlib
-%global releaseno 2
+%global releaseno 1
 # Note: define _srcarchivename in Travis build only.
 %{!?srcarchivename: %global srcarchivename %{srcname}-%{version}-%{releaseno}}
 
 
 Name:           python-simcradarlib
-Version:        0.9
+Version:        0.10
 Release:        %{releaseno}%{?dist}
 Summary:        Libreria Python per applicazioni radar di Arpae-SIMC
 License:        GPLv3
@@ -63,6 +63,9 @@ Libreria Python per applicazioni radar di Arpae-SIMC
 
 
 %changelog
+* Tue May 05 2026 Daniele Branchini  <dbranchini@arpae.it> - 0.10-1
+- Esporta il dataset odim come matrice di dtype pari al dtype della matrice in input, non più float32 di default
+
 * Thu Jan 22 2026 Daniele Branchini  <dbranchini@arpae.it> - 0.9-2
 - Fixed version in sources
 
@@ -73,7 +76,7 @@ Libreria Python per applicazioni radar di Arpae-SIMC
 - Removed deprecated setup.py test from spec file
 
 * Fri Jun 20 2025 Daniele Branchini <dbranchini@arpae.it> - 0.8-1
-- resolved: colorbar->ScalarMappable->setarray
+- Resolved: colorbar->ScalarMappable->setarray
 
 * Fri Jun 20 2025 Emanuele Di Giacomo <edigiacomo@arpae.it> - 0.7-1
 - Add YAML file to package
