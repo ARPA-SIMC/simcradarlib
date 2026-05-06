@@ -146,7 +146,7 @@ class OdimDset(StructBase):
         hf.create_dataset(
             self.hierarchy,
             shape=self.data.shape,
-            dtype=self.data.dtype,
+            dtype=np.dtype(self.data.format),
             data=self.data,
             compression="gzip",
         )
