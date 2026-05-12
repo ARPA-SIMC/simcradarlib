@@ -5,7 +5,7 @@
 
 
 Name:           python-simcradarlib
-Version:        0.10
+Version:        0.11
 Release:        %{releaseno}%{?dist}
 Summary:        Libreria Python per applicazioni radar di Arpae-SIMC
 License:        GPLv3
@@ -63,6 +63,9 @@ Libreria Python per applicazioni radar di Arpae-SIMC
 
 
 %changelog
+* Tue May 12 2026 Daniele Branchini  <dbranchini@arpae.it> - 0.11-1
+- Correzione lettura tipo per memoryview
+
 * Tue May 05 2026 Daniele Branchini  <dbranchini@arpae.it> - 0.10-1
 - Esporta il dataset odim come matrice di dtype pari al dtype della matrice in input, non più float32 di default
 
