@@ -1197,8 +1197,8 @@ class OdimWhatDset(OdimGroup):
     -starttime          --str (default=None): [Starting HHmmss]
     -enddate            --str (default=None): [Ending YYYYMMDD]
     -endtime            --str (default=None): [Ending HHmmss]
-    -gain               --float (default=1.0): Coefficient ’a’ in y=ax+b used to convert to unit
-    -offset             --float (default=0.0): Coefficient ’b’ in y=ax+b used to convert to unit
+    -gain               --float (default=None): Coefficient ’a’ in y=ax+b used to convert to unit
+    -offset             --float (default=None): Coefficient ’b’ in y=ax+b used to convert to unit
     -nodata             --float (default=None):Raw value used to denote areas void of data
     -undetect           --float (default=None):Raw value used to denote areas below
                                                the measurement detection threshold
@@ -1236,8 +1236,8 @@ class OdimWhatDset(OdimGroup):
         starttime: Optional[str] = None,
         enddate: Optional[str] = None,
         endtime: Optional[str] = None,
-        gain: float = 1.0,
-        offset: float = 0.0,
+        gain: Optional[float] = None,
+        offset: Optional[float] = None,
         nodata: Optional[float] = None,
         undetect: Optional[float] = None,
     ):

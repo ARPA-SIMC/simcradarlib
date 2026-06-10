@@ -13,7 +13,9 @@ from simcradarlib.io_utils.structure_class import StructBase
 import h5py
 import numpy as np
 from typing import List, Union, Optional
+import logging
 
+module_logger = logging.getLogger(__name__)
 
 class OdimHierarchyPvol(StructBase):
 
@@ -364,7 +366,11 @@ class OdimHierarchyPvol(StructBase):
         raw = self.datasets[self.elangles.index(elangle)][indexq]
         offset = self.group_datasets_data_what[self.elangles.index(elangle)][indexq].offset
         gain = self.group_datasets_data_what[self.elangles.index(elangle)][indexq].gain
-        data = raw * gain + offset
+        data=raw
+        if gain is not None and offset is not None:
+            data = data * gain + offset
+        else:
+            logging.warning(f"gain and offset undefined in {self.group_datasets_data_what[self.elangles.index(elangle)][indexq].hierarchy}")
         return data
 
     def get_attrs_from_odimgroup(
