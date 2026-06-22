@@ -761,8 +761,7 @@ class OdimWhereRhi(OdimWhereCross):
 class OdimWhereVertProfile(OdimWherePolar):
 
     """
-    Classe che implementa il gruppo "where" a livello gerarchico del
-    root di un ODIM OPERA v. 2.1 per profili verticali
+    Classe che implementa il gruppo "/where" per profili verticali
     (vol['what'].attrs['object']='VP').
 
     Classe figlia di simcradarlib.odim.odim_utils.OdimWherePolar con attributi dell'istanza:
@@ -1140,11 +1139,10 @@ class OdimHowCartesianImageDset(OdimGroup):
         self.ACCnum = ACCnum
 
 
-class OdimHowVertProfileDset(OdimGroup):
+class OdimHowVertProfile(OdimGroup):
     """
-    Classe che implementa il sottogruppo "how" di un gruppo "dataset" di
-    ODIM OPERA v. 2.1 per profili verticali, aventi
-    vol['what'].attrs['object']='VP'.
+    Classe che implementa il gruppo "/how" per profili verticali,
+    aventi vol['what'].attrs['object']='VP'.
 
     Classe figlia di simcradarlib.odim.odim_utils.OdimGroup con attributi dell'istanza:
 
@@ -1156,7 +1154,7 @@ class OdimHowVertProfileDset(OdimGroup):
     -dealiased   --Optional[bool] = None   : “True” if data has been dealiased,
                                              “False” if not
 
-    OdimHowVertProfileDset eredita i metodi di classe di
+    OdimHowVertProfile eredita i metodi di classe di
     simcradarlib.odim.odim_utils.OdimGroup:
     .odim_create(self, hf: h5py._hl.files.File):
         crea il gruppo nel file hdf aperto da h5py.
