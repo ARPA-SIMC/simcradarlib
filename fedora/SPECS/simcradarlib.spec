@@ -57,6 +57,7 @@ Libreria Python per applicazioni radar di Arpae-SIMC
 %files -n python3-simcradarlib
 %license LICENSE
 %doc README.md
+%{_bindir}/simcradarlib-vadprofiles_hdf2bufr
 # For noarch packages: sitelib
 %{python3_sitelib}/%{srcname}/*
 %{python3_sitelib}/%{srcname}-%{version}-py%{python3_version}.egg-info/*
